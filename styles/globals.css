@@ -1,0 +1,205 @@
+/* Start of Global Style */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  color: #0c0b0b !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #0c0b0b !important;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #0c0b0b !important;
+  opacity: 1 !important;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #0c0b0b !important;
+  opacity: 1 !important;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #0c0b0b !important;
+}
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #0c0b0b !important;
+}
+
+::placeholder {
+  /* Most modern browsers support this now. */
+  color: #0c0b0b !important;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/* .row{
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.col{
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.sm-8{
+  -webkit-box-flex: 0;
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+}
+.sm-4{
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 33.333333%;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+} */
+/* End of Global Style */
+
+/* Start of Font Theme Style*/
+.themeFont {
+  font-family: "Baloo_Bhai";
+}
+/* End of Font Theme Style*/
+
+/* Start of Input Control Style */
+input,
+select,
+textarea {
+  color: #0c0b0b;
+  background: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 1px #0c0b0b !important;
+}
+/* End of Input Control Style */
+
+/* Start of Button Style */
+.theme-button {
+  background: #0c0b0b !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  font-size: 13px;
+  font-weight: 700 !important;
+}
+.theme-button:hover,
+.theme-button:focus,
+.theme-button:active,
+.theme-button:hover,
+.theme-button:focus,
+.theme-button:active {
+  background-color: #0c0b0b;
+  outline: none;
+  box-shadow: none !important;
+}
+/* End of Button Style */
+
+/* Start of Checkbox Style */
+.chakra-checkbox__control {
+  border-color: #ffffff !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+}
+.chakra-checkbox__control:focus,
+.chakra-checkbox__control[data-focus] {
+  box-shadow: none !important;
+}
+.chakra-checkbox__control[aria-checked="true"],
+.chakra-checkbox__control[data-checked] {
+  border-color: #0c0b0b !important;
+  background: #0c0b0b !important;
+}
+/* End of Checkbox Style */
+
+/* Start of Toggle Switch Style */
+.toggle-link .chakra-switch__track,
+.toggle-link .chakra-switch__thumb {
+  background: transparent;
+  border: 4px solid #0c0b0b;
+}
+.toggle-link .chakra-switch__track:focus,
+.toggle-link .chakra-switch__track[data-focus] {
+  box-shadow: none !important;
+}
+.toggle-link .chakra-switch__track[aria-checked="true"],
+.toggle-link .chakra-switch__track[data-checked] {
+  background: #0c0b0b;
+}
+.toggle-link .chakra-switch__thumb[aria-checked="true"],
+.toggle-link .chakra-switch__thumb[data-checked] {
+  border: 4px solid #ffffff;
+}
+/* End of Toggle Switch Style */
+
+/* Start of Links Page Style */
+.add-links-section .add-link-btn {
+  font-size: 16px !important;
+}
+.analtics-tabs .chakra-tabs__tab {
+  font-family: "Baloo_Bhai";
+  opacity: 0.3;
+  outline: none;
+}
+.analtics-tabs .chakra-tabs__tab:focus,
+.analtics-tabs .chakra-tabs__tab[data-focus] {
+  box-shadow: none;
+}
+.links {
+  margin-bottom: 18px;
+}
+.editable-container .chakra-editable__input {
+  width: auto;
+  /* padding-left: 10px; */
+  padding-right: 10px;
+  background: transparent !important;
+  border: none !important;
+}
+.editable-container .chakra-editable__input:focus {
+  box-shadow: none !important;
+}
+.linkImg-upload-container {
+  height: 500px;
+}
+/* End of Links Page Style */
+
+/* Start of File Uploader Drag and Drop Style*/
+.dropzone {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-width: 2px;
+  border-radius: 2px;
+  border-color: #0d0b0b;
+  border-style: dashed;
+  background-color: #fafafa;
+  color: rgb(13 11 11 / 70%);
+  outline: none;
+  height: 100%;
+  justify-content: center;
+}
+/* End of File Uploader Drag and Drop Style*/
