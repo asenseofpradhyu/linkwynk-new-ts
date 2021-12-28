@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import type { NextPage } from "next";
 import { Button } from "@chakra-ui/react";
 import React from "react";

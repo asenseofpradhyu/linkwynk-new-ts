@@ -1,4 +1,4 @@
-import Head from "next/head";
+/* eslint-disable camelcase */
 import { useRouter } from "next/router";
 import * as Yup from "yup";
 import {
@@ -14,21 +14,26 @@ import {
   FormErrorMessage,
   Flex,
 } from "@chakra-ui/react";
-import { Formik, useFormik } from "formik";
-import { useState, useEffect } from "react";
-import { signIn, useSession, getSession } from "next-auth/react";
-const axios = require("axios");
+import { useFormik } from "formik";
+import React, { useState, useEffect } from "react";
+import { signIn, getSession } from "next-auth/react";
+// const axios = require("axios");
 
 // Local File Imports
-import { API_URL } from "../../_helper/config";
-import Utility from "../../_helper/util";
+// import { API_URL } from "../../_helper/config";
+// import Utility from "../../_helper/util";
 // import ForgotPassword from "./forgot_password";
 
-interface sessionData {
-  data: any;
-}
+// type userData = {
+//   data: {
+//     first_login: number;
+//     token: string;
+//     username: string;
+//   };
+// };
 
-export default function Login() {
+// eslint-disable-next-line func-names
+const Login = function () {
   const router = useRouter();
   // const [session] = useSession();
   const [loginError, setLoginError] = useState("");
@@ -40,16 +45,16 @@ export default function Login() {
   }, [router]);
 
   const {
-    values,
+    // values,
     handleSubmit,
-    submitCount,
+    // submitCount,
     getFieldProps,
-    setValues,
+    // setValues,
     touched,
     errors,
     isSubmitting,
     setSubmitting,
-    setFieldValue,
+    // setFieldValue,
   } = useFormik({
     initialValues: {
       email: "",
@@ -81,8 +86,8 @@ export default function Login() {
       //   console.log(error);
       // });
 
-      const email = values.email;
-      const password = values.password;
+      const { email } = values;
+      const { password } = values;
       const res = signIn("credentials", {
         email,
         password,
@@ -90,33 +95,31 @@ export default function Login() {
         redirect: false,
       });
 
-      res.then(async function (this: any, response: any) {
+      res.then(async (response: any) => {
         if (response.error) {
           setLoginError(response.error);
           setSubmitting(false);
-          console.log(response);
-        } else if (response.status == 200 && response.ok) {
+          // console.log(response);
+        } else if (response.status === 200 && response.ok) {
           const session = await getSession();
-          const { userdata }: { userdata: any } = session;
-          console.log("Session:-  " + JSON.stringify(session!));
+          // const { userdata } = session;
+          console.log(session);
+          // console.log(`Session:-  ${JSON.stringify(session!)}`);
 
-          setTimeout(
-            function () {
-              if (userdata!.data.first_login == 0) {
-                console.log("Link Page..");
-                // router.push(`/admin/${session!.username}/links`);
-              } else if (userdata!.data.first_login == 1) {
-                // router.push("username");
-                console.log("First login 1..");
-              } else {
-                setLoginError(
-                  "Something Went Wrong While Redirecting the Page..!!"
-                );
-                setSubmitting(false);
-              }
-            }.bind(this),
-            100
-          );
+          setTimeout(() => {
+            if (session?.userData.first_login === 0) {
+              console.log("Link Page..");
+              // router.push(`/admin/${username}/links`);
+            } else if (session?.userData.first_login === 1) {
+              // router.push("username");
+              // console.log("First login 1..");
+            } else {
+              setLoginError(
+                "Something Went Wrong While Redirecting the Page..!!"
+              );
+              setSubmitting(false);
+            }
+          }, 100);
 
           // if(session.first_login == 0){
           //   console.log("Link Page..");
@@ -132,7 +135,7 @@ export default function Login() {
           // router.push('username')
           // router.push("/admin/dashboard");
           // }.bind(this), 300);
-          console.log(userdata.data);
+          // console.log(userdata.data);
         } else {
           setLoginError("Something Went Wrong..!!");
           setSubmitting(false);
@@ -178,8 +181,8 @@ export default function Login() {
               <FormControl
                 isRequired
                 isInvalid={
-                  (touched["email"] as boolean) &&
-                  (errors["email"] as unknown as boolean)
+                  (touched.email as boolean) &&
+                  (errors.email as unknown as boolean)
                 }
               >
                 <Input
@@ -190,15 +193,15 @@ export default function Login() {
                   {...getFieldProps("email")}
                 />
                 <FormErrorMessage>
-                  {touched["email"] && errors["email"]}
+                  {touched.email && errors.email}
                 </FormErrorMessage>
               </FormControl>
               <FormControl
                 isRequired
                 mt="23px"
                 isInvalid={
-                  (touched["password"] as boolean) &&
-                  (errors["password"] as unknown as boolean)
+                  (touched.password as boolean) &&
+                  (errors.password as unknown as boolean)
                 }
               >
                 <Input
@@ -209,7 +212,7 @@ export default function Login() {
                   {...getFieldProps("password")}
                 />
                 <FormErrorMessage>
-                  {touched["password"] && errors["password"]}
+                  {touched.password && errors.password}
                 </FormErrorMessage>
               </FormControl>
               <Center flexDirection={["column", "column"]}>
@@ -233,7 +236,7 @@ export default function Login() {
               </Center>
               <Center>
                 <Text fontSize="14px" mt="38px">
-                  Don't have an account?{" "}
+                  Don&apos;t have an account?{" "}
                   <Link href="register" fontWeight="extrabold">
                     Create one
                   </Link>
@@ -280,4 +283,6 @@ export default function Login() {
     //     </Box>
     // </Flex>
   );
-}
+};
+
+export default Login;

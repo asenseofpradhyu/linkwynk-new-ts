@@ -3,14 +3,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
 
 // Local File Imports
-import { API_URL } from "../../../_helper/config";
-import { string } from "yup";
+// eslint-disable-next-line import/named
+import API_URL from "../../../_helper/config";
 
-type UserData = {
-  token: string;
-  firstLogin: number;
-  username: string;
-};
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 export default NextAuth({
@@ -34,9 +29,9 @@ export default NextAuth({
       // type IProductContext = [IProductItem[] | undefined, React.Dispatch<React.SetStateAction<IProductItem[] | undefined>>];
       name: "Credentials",
       credentials: {},
-      async authorize(credentials: any, _req: any) {
+      async authorize(credentials: any) {
         const user = await axios.post(
-          API_URL + "login",
+          `${API_URL}login`,
           {
             password: credentials.password,
             email: credentials.email,
@@ -118,21 +113,24 @@ export default NextAuth({
   callbacks: {
     // async signIn({ user, account, profile, email, credentials }) { return true },
     // async redirect({ url, baseUrl }) { return baseUrl },
-    async jwt({ token, user, account, profile, isNewUser }) {
+    async jwt({ token, user }) {
       if (user) {
-        token = user;
+        // eslint-disable-next-line no-param-reassign
+        token.data = user.data;
         // token.first_login = user.data.first_login;
         // token.username = user.data.username;
-        console.log(token);
+        // console.log(token);
       }
 
       return token;
     },
-    async session({ session, token, user }) {
-      session.userdata = token;
+    async session({ session, token }) {
+      // session.userdata = token;
+      // eslint-disable-next-line no-param-reassign
+      session.userData = token.data;
       // session.first_login = token.data.first_login;
       // session.username = token.data.username;
-      // console.log(session);
+      console.log(session);
       return session;
     },
   },

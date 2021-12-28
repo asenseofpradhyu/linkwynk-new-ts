@@ -14,13 +14,13 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint"],
   rules: {
-    "import/resolver": {
-      typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
-    },
     "import/extensions": [
       "error",
-      "extension",
+      "ignorePackages",
       {
+        js: "never",
+        jsx: "never",
+        json: "never",
         ts: "never",
         tsx: "never",
       },
@@ -30,7 +30,7 @@ module.exports = {
       "error",
       {
         html: "ignore",
-        exceptions: ["Component"],
+        exceptions: ["Component", "Input", "Checkbox"],
       },
     ],
   },
