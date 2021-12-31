@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
 import React, { useState, useEffect } from "react";
-import { signIn, getSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 // const axios = require("axios");
 
 // Local File Imports
@@ -101,7 +101,7 @@ const Login = function () {
           setSubmitting(false);
           // console.log(response);
         } else if (response.status === 200 && response.ok) {
-          const session = await getSession();
+          const { data: session } = await useSession();
           // const { userdata } = session;
           console.log(session);
           // console.log(`Session:-  ${JSON.stringify(session!)}`);
