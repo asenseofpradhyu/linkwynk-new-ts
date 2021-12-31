@@ -130,7 +130,6 @@ export default NextAuth({
       session.userData = token.data;
       // session.first_login = token.data.first_login;
       // session.username = token.data.username;
-      console.log(session);
       return session;
     },
   },

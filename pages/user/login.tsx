@@ -103,12 +103,10 @@ const Login = function () {
         } else if (response.status === 200 && response.ok) {
           const { data: session } = await useSession();
           // const { userdata } = session;
-          console.log(session);
           // console.log(`Session:-  ${JSON.stringify(session!)}`);
 
           setTimeout(() => {
             if (session?.userData.first_login === 0) {
-              console.log("Link Page..");
               router.push(`/admin/${session?.userData.username}/links`);
             } else if (session?.userData.first_login === 1) {
               // router.push("username");
