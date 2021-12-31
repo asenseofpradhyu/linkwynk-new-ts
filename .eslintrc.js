@@ -14,23 +14,16 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint"],
   rules: {
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        js: "never",
-        jsx: "never",
-        json: "never",
-        ts: "never",
-        tsx: "never",
-      },
-    ],
+    "no-shadow": "off",
+    "no-underscore-dangle": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
     "react/jsx-filename-extension": [1, { extensions: [".ts", ".tsx"] }],
     "react/jsx-props-no-spreading": [
       "error",
       {
         html: "ignore",
-        exceptions: ["Component", "Input", "Checkbox"],
+        exceptions: ["Component", "Input", "Checkbox", "IconButton", "Box"],
       },
     ],
   },

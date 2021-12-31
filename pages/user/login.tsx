@@ -109,7 +109,7 @@ const Login = function () {
           setTimeout(() => {
             if (session?.userData.first_login === 0) {
               console.log("Link Page..");
-              // router.push(`/admin/${username}/links`);
+              router.push(`/admin/${session?.userData.username}/links`);
             } else if (session?.userData.first_login === 1) {
               // router.push("username");
               // console.log("First login 1..");
