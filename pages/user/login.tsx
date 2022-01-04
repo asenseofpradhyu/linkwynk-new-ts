@@ -102,13 +102,14 @@ const Login = function () {
           // console.log(response);
         } else if (response.status === 200 && response.ok) {
           const { data: session } = await useSession();
+          const sessionRef: any = session;
           // const { userdata } = session;
           // console.log(`Session:-  ${JSON.stringify(session!)}`);
 
           setTimeout(() => {
-            if (session!.userData.first_login === 0) {
-              router.push(`/admin/${session?.userData.username}/links`);
-            } else if (session!.userData.first_login === 1) {
+            if (sessionRef.userData.first_login === 0) {
+              router.push(`/admin/${sessionRef.userData.username}/links`);
+            } else if (sessionRef.userData.first_login === 1) {
               // router.push("username");
               // console.log("First login 1..");
             } else {
