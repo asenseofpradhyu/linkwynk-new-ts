@@ -106,9 +106,9 @@ const Login = function () {
           // console.log(`Session:-  ${JSON.stringify(session!)}`);
 
           setTimeout(() => {
-            if (session?.userData.first_login === 0) {
+            if (session!.userData.first_login === 0) {
               router.push(`/admin/${session?.userData.username}/links`);
-            } else if (session?.userData.first_login === 1) {
+            } else if (session!.userData.first_login === 1) {
               // router.push("username");
               // console.log("First login 1..");
             } else {
