@@ -36,6 +36,7 @@ import { signIn, useSession } from "next-auth/react";
 const Login = function () {
   const router = useRouter();
   // const [session] = useSession();
+  const { data: session } = useSession();
   const [loginError, setLoginError] = useState("");
 
   useEffect(() => {
@@ -101,7 +102,6 @@ const Login = function () {
           setSubmitting(false);
           // console.log(response);
         } else if (response.status === 200 && response.ok) {
-          const { data: session } = await useSession();
           const sessionRef: any = session;
           // const { userdata } = session;
           // console.log(`Session:-  ${JSON.stringify(session!)}`);
