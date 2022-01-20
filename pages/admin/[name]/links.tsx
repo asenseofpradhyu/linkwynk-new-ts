@@ -256,6 +256,39 @@ const Links = function (props: any) {
       .catch(() => {});
   };
 
+  // DND Kit
+  // const sensors = useSensors(
+  //   useSensor(PointerSensor),
+  //   useSensor(KeyboardSensor, {
+  //     coordinateGetter: sortableKeyboardCoordinates,
+  //   })
+  // );
+  // const [activeId, setActiveId] = useState(null);
+
+  // const handleDragStart = (event: any) => {
+  //   setActiveId(event.active.id);
+  // };
+
+  // const handleDragEnd = (event: any) => {
+  //   const linkItems = Array.from(linkList.list);
+  //   setActiveId(null);
+  //   let arr: any;
+  //   if (event.active.id !== event.over.id) {
+  //     const oldIndex = event.active.id;
+  //     const newIndex = event.over.id;
+  //     // arr = arrayMove(linkItems, oldIndex, newIndex);
+  //     linkItems.splice(newIndex, 0, oldIndex);
+  //     setlinkList({ list: linkItems });
+  //     // linkItems((list: any) => {
+  //     //   // const oldIndex = items.indexOf(event.active.id);
+  //     //   // const newIndex = items.indexOf(event.over.id);
+  //     //   // return arrayMove(items, oldIndex, newIndex);
+  //     //   console.log(list);
+  //     // });
+  //   }
+  //   console.log(linkList.list);
+  // };
+
   const saveLinkData = (obj: any) => {
     const apiLoad = obj.switchCase;
     switch (apiLoad) {
@@ -703,6 +736,186 @@ const Links = function (props: any) {
                       className="draggable-container"
                       marginTop={{ base: "20px", md: "20px", lg: "40px" }}
                     >
+                      {/* Start of Static Custom link Design */}
+                      {/* <Box>
+                        <DndContext
+                          sensors={sensors}
+                          collisionDetection={closestCenter}
+                          onDragStart={handleDragStart}
+                          onDragEnd={handleDragEnd}
+                        > */}
+                      {/* <Box> */}
+                      {/* <SortableContext
+                            items={linkList.list}
+                            strategy={verticalListSortingStrategy}
+                          >
+                            {Object.values(linkList.list).map(
+                              (type: any, i: number) => (
+                                <Draggable
+                                  key={type._id}
+                                  linkData={type}
+                                  indexNo={i}
+                                />
+                              )
+                            )}
+                          </SortableContext> */}
+                      {/* <DragOverlay>
+                            {activeId ? (
+                              <div
+                                style={{
+                                  width: "100%",
+                                  height: "auto",
+                                  backgroundColor: "red",
+                                }}
+                              />
+                            ) : null}
+                          </DragOverlay> */}
+                      {/* <Box
+                              className="links"
+                              bg="#F5F5F7"
+                              borderRadius="14px"
+                              boxShadow="0 0 .4rem #666"
+                            >
+                              <Flex>
+                                  <Box
+                                    className="draggable-handle"
+                                    display="flex"
+                                    padding={{
+                                      base: "0px 13px",
+                                      md: "0px 13px",
+                                      lg: "0px 16px",
+                                    }}
+                                    borderRight="2px solid rgba(12, 11, 11, 0.2)"
+                                  >
+                                    <Center transform="rotate(90deg)">
+                                      <FiRepeat fontSize="20px" />
+                                    </Center>
+                                  </Box>
+                                <Box
+                                  className="draggable-link-content"
+                                  padding="8px 16px"
+                                  width="100%"
+                                >
+                                  <Flex
+                                    alignItems="center"
+                                    className="edit-link-details"
+                                  >
+                                    <Box
+                                      className="link-img"
+                                      display="inline-block"
+                                    >
+                                      <Image
+                                        boxSize="64px"
+                                        borderRadius="12px"
+                                        objectFit="cover"
+                                        alt="Test"
+                                        fallbackSrc="https://via.placeholder.com/64"
+                                      />
+                                    </Box>
+                                    <Box
+                                      className="link-detials"
+                                      display="inline-block"
+                                      marginLeft={{
+                                        base: "10px",
+                                        md: "10px",
+                                        lg: "22px",
+                                      }}
+                                    />
+                                    <Box marginLeft="auto">
+                                      <Box className="toggle-link">
+                                        <Switch id="link-show-hide" size="md" />
+                                      </Box>
+                                    </Box>
+                                  </Flex>
+                                  <Flex
+                                    className="icon-links-control"
+                                    marginTop="5px"
+                                    justifyContent="flex-end"
+                                  >
+                                    <Box>
+                                      <Tooltip
+                                        hasArrow
+                                        label="Image"
+                                        bg="#0C0B0B"
+                                        color="#FFFFFF"
+                                        borderRadius="8px"
+                                      >
+                                        <Box
+                                          display="inline-block"
+                                          cursor="pointer"
+                                          marginRight="18px"
+                                          fontSize="18px"
+                                        >
+                                          <FiImage title="link Thumbnail" />
+                                        </Box>
+                                      </Tooltip>
+
+                                      <Tooltip
+                                        hasArrow
+                                        label="Schedule"
+                                        bg="#0C0B0B"
+                                        color="#FFFFFF"
+                                        borderRadius="8px"
+                                      >
+                                        <Box
+                                          display="inline-block"
+                                          cursor="pointer"
+                                          marginRight="18px"
+                                          fontSize="18px"
+                                        >
+                                          <FiClock title="link Schedule" />
+                                        </Box>
+                                      </Tooltip>
+                                      <Box
+                                        display="inline-block"
+                                        cursor="pointer"
+                                        marginRight="18px"
+                                        fontSize="18px"
+                                      >
+                                        <FiLayers />
+                                      </Box>
+                                      <Tooltip
+                                        hasArrow
+                                        label="Delete"
+                                        bg="#0C0B0B"
+                                        color="#FFFFFF"
+                                        borderRadius="8px"
+                                      >
+                                        <Box
+                                          display="inline-block"
+                                          fontSize="18px"
+                                          color="red"
+                                          cursor="pointer"
+                                        >
+                                          <FiXCircle title="Remove Link" />
+                                        </Box>
+                                      </Tooltip>
+                                    </Box>
+                                  </Flex>
+                                </Box>
+                              </Flex>
+                            </Box> */}
+                      {/* </Box> */}
+                      {/* </DndContext>
+                      </Box> */}
+                      {/* End of Static Custom link Design */}
+                      {/* <DndContext onDragEnd={handleDragEnd}>
+                        {!isDropped ? draggableMarkup : null}
+                        <Droppable>
+                          {isDropped ? draggableMarkup : "Drop here"}
+                        </Droppable>
+                      </DndContext> */}
+
+                      {/*
+                       **************************************
+                       **************************************
+                       **************************************
+                       **************************************
+                       **************************************
+                       **************************************
+                       **************************************
+                       **************************************
+                       */}
                       <DragDropContext onDragEnd={onLinkDragEnd}>
                         <Droppable droppableId="droppable-1">
                           {(provided) => (
@@ -883,9 +1096,6 @@ const Links = function (props: any) {
                                                 justifyContent="flex-end"
                                               >
                                                 <Box>
-                                                  {/* <Box display="inline-block" cursor="pointer" marginRight="18px" fontSize="18px">
-                              <FiShuffle title="link Name"  />
-                            </Box> */}
                                                   <Tooltip
                                                     hasArrow
                                                     label="Image"
@@ -905,9 +1115,7 @@ const Links = function (props: any) {
                                                       <FiImage title="link Thumbnail" />
                                                     </Box>
                                                   </Tooltip>
-                                                  {/* <Box display="inline-block" cursor="pointer" marginRight="18px" fontSize="18px">
-                              <FiZap title="link Thumbnail" />
-                            </Box> */}
+
                                                   <Tooltip
                                                     hasArrow
                                                     label="Schedule"

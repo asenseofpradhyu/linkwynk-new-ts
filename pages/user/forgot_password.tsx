@@ -1,4 +1,3 @@
-/* eslint-disable func-names */
 import React, { useState } from "react";
 import * as Yup from "yup";
 import {
@@ -20,7 +19,7 @@ import API_URL from "../../_helper/config";
 
 const axios = require("axios");
 
-const ForgotPassword = function () {
+const ForgotPassword = function ForgotPassword() {
   const [apiMessage, setApiMessage] = useState();
   const {
     handleSubmit,

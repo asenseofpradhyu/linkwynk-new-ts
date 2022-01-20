@@ -22,7 +22,7 @@ import Auth from "../../component/Auth";
 
 const axios = require("axios");
 
-const ChangePassword = function () {
+const ChangePassword = function ChangePassword() {
   const { data: session } = useSession();
   const [apiMessage, setApiMessage] = useState("");
 

@@ -32,8 +32,7 @@ import { signIn, useSession } from "next-auth/react";
 //   };
 // };
 
-// eslint-disable-next-line func-names
-const Login = function () {
+const Login = function Login() {
   const router = useRouter();
   // const [session] = useSession();
   const { data: session } = useSession();
@@ -107,9 +106,9 @@ const Login = function () {
           // console.log(`Session:-  ${JSON.stringify(session!)}`);
 
           setTimeout(() => {
-            if (sessionRef.userData.first_login === 0) {
+            if (sessionRef!.userData.first_login === 0) {
               router.push(`/admin/${sessionRef.userData.username}/links`);
-            } else if (sessionRef.userData.first_login === 1) {
+            } else if (sessionRef!.userData.first_login === 1) {
               // router.push("username");
               // console.log("First login 1..");
             } else {

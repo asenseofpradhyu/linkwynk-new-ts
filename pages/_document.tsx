@@ -10,18 +10,12 @@ import Document, {
   NextScript,
   DocumentContext,
 } from "next/document";
+
 // import { extractCritical } from "@emotion/server";
 import { resetServerContext } from "react-beautiful-dnd";
 // import customTheme from "../theme/customTheme";
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const page = await ctx.renderPage();
-    const initialProps = await Document.getInitialProps(ctx);
-    resetServerContext();
-    return { ...initialProps, ...page };
-  }
-
   render() {
     return (
       <Html lang="en">
@@ -41,4 +35,10 @@ export default class MyDocument extends Document {
       </Html>
     );
   }
+}
+
+export async function getServerSideProps(ctx: DocumentContext) {
+  const page = await ctx.renderPage();
+  resetServerContext();
+  return { ...page };
 }

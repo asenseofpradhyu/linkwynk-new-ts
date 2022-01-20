@@ -1,4 +1,3 @@
-/* eslint-disable func-names */
 import { useRouter } from "next/router";
 import React from "react";
 import {
@@ -27,13 +26,14 @@ import {
 } from "react-icons/fi";
 import { useSession } from "next-auth/react";
 
-const SideNav = function () {
+const SideNav = function SideNav() {
   const router = useRouter();
+  const { data: session } = useSession();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navigateUser = async (navigateUrl: any) => {
-    const { data: session } = await useSession();
-    router.push(`/admin/${session?.userData.username}/${navigateUrl}`);
+    const sessionRef: any = session;
+    router.push(`/admin/${sessionRef.userData.username}/${navigateUrl}`);
   };
 
   const handleToggle = () => (isOpen ? onClose() : onOpen());

@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
@@ -27,7 +26,7 @@ import API_URL from "../_helper/config";
 
 const axios = require("axios");
 
-const Links = function (props: any) {
+const Links = function Links(props: any) {
   const { globalLinkData } = props;
   const router = useRouter();
   const { links } = router.query;
